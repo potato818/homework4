@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}修改基本資料{% endblock %}
+{% block content %}
+    <h1 class="text-center">修改基本資料</h1>
+    <form method="post" class="w-50 mx-auto">
+        <div class="mb-3">
+            <label for="username" class="form-label">用戶名</label>
+            <input type="text" class="form-control" id="username" value="{{ user[0] }}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">電子郵件</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user[1] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">密碼</label>
+            <input type="password" class="form-control" id="password" name="password" value="{{ user[2] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">手機</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ user[3] }}">
+        </div>
+        <div class="mb-3">
+            <label for="birthdate" class="form-label">出生年月日</label>
+            <input type="date" class="form-control" id="birthdate" name="birthdate" value="{{ user[4] }}">
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary m-2">儲存</button>
+            <a href="{{ url_for('welcome', iid=iid) }}" class="btn btn-secondary m-2">離開</a>
+        </div>
+    </form>
+{% endblock %}
