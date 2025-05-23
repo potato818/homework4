@@ -24,6 +24,11 @@ def init_db():
         conn.commit()
         print("資料庫初始化成功，members 表格已創建")
 
+@app.before_first_request
+def initialize_database():
+    """在第一個請求前初始化資料庫"""
+    init_db()
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -123,7 +128,3 @@ def delete(iid):
         c.execute('DELETE FROM members WHERE iid = ?', (iid,))
         conn.commit()
     return redirect(url_for('index'))
-
-if __name__ == '__main__':
-    init_db()
-    app.run(debug=True)
